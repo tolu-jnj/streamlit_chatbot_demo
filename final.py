@@ -3,7 +3,7 @@ from openai import OpenAI
 import tiktoken
 import streamlit as st
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = st.secrets["OPENAI_API_KEY"] or os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=api_key)
 MODEL = "gpt-4.1-nano-2025-04-14"
