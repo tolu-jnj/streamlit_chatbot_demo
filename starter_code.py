@@ -2,10 +2,11 @@ import os
 from openai import OpenAI
 import tiktoken
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("VENICE_API_KEY") or os.getenv("OPENAI_API_KEY")
+base_url = os.getenv("VENICE_BASE_URL") or "https://api.venice.ai/api/v1"
 
-client = OpenAI(api_key=api_key)
-MODEL = "gpt-4.1-nano-2025-04-14"
+client = OpenAI(api_key=api_key, base_url=base_url)
+MODEL = "llama-3.3-70b"
 TEMPERATURE = 0.7
 MAX_TOKENS = 100
 TOKEN_BUDGET = 1000
